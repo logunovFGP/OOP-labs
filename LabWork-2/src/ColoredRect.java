@@ -27,8 +27,7 @@ public class ColoredRect extends DrawableRectangle {
 
     @Override
     public void draw(Graphics g) {
-        g.setColor(this.outColor);
-        g.drawRect(this.x1, this.y1, getWidth(), getHeight());
+        super.draw(g);
         g.setColor(inColor);
         g.fillRect(this.x1, this.y1, getWidth(), getHeight());
     }
