@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Formatter;
 import javax.swing.*;
 
-public class BouncingRectangleSimple extends JPanel {
+public class BouncingCircleSimple extends JPanel {
    // Container box's width and height
    private static final int BOX_WIDTH = 800;
    private static final int BOX_HEIGHT = 600;
@@ -17,7 +17,7 @@ public class BouncingRectangleSimple extends JPanel {
    private static final int UPDATE_RATE = 30; // Number of refresh per second
   
    /** Constructor to create the UI components and init game objects. */
-   public BouncingRectangleSimple() {
+   public BouncingCircleSimple() {
       this.setPreferredSize(new Dimension(BOX_WIDTH, BOX_HEIGHT));
 
       Thread gameThread = new Thread() {

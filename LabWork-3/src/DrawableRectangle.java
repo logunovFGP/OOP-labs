@@ -20,6 +20,6 @@ public class DrawableRectangle extends Rectangle {
     }
     public void draw(Graphics g) {
         g.setColor(this.outColor);
-        g.fillRect(this.x1, this.y1, getWidth(), getHeight());
+        g.drawRect(this.x1, this.y1, getWidth(), getHeight());
     }
 }

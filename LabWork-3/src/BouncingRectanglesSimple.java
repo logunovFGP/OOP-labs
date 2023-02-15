@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.Formatter;
 import javax.swing.*;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 /**
  * One rectangle bouncing inside a rectangular box. 
@@ -27,9 +28,9 @@ public class BouncingRectanglesSimple extends JPanel {
 			if(i<10)
 				rectangles[i] = new Rectangle (rectWidth[i], rectHeight[i]);
 			else if (i<20)
-				rectangles[i] = new DrawableRectangle (rectWidth[i], rectHeight[i], null);
+				rectangles[i] = new DrawableRectangle (rectWidth[i], rectHeight[i], Color.GREEN);
 			else
-				rectangles[i] = new ColoredRect (rectWidth[i], rectHeight[i], null, null);
+				rectangles[i] = new ColoredRect (rectWidth[i], rectHeight[i], Color.RED, Color.gray);
 			
 			rectSpeedX[i] = ThreadLocalRandom.current().nextInt(1,6);
 			rectSpeedY[i] = ThreadLocalRandom.current().nextInt(1,6);
@@ -51,13 +52,15 @@ public class BouncingRectanglesSimple extends JPanel {
 			   for( int i =0; i<rectangles.length; i++)
 			   {
 					Rectangle currentRect = rectangles[i];
-					if (currentRect.x1 + rectSpeedX[i] < 0
-                    || (currentRect.x2 + rectSpeedX[i]  > BOX_WIDTH)) {
-                        rectSpeedX[i] = -rectSpeedX[i];
+
+                    int speedX = rectSpeedX[i];
+					if (currentRect.x1 +  speedX< 0
+                    || (currentRect.x2 + speedX  > BOX_WIDTH)) {
+                        rectSpeedX[i] = -speedX;
                     }
 					// May cross both x and y bounds
-					if (currentRect.y1 + rectSpeedX[i] < 0
-                    || (currentRect.y2 + rectSpeedX[i] > BOX_HEIGHT)) {
+					if (currentRect.y1 + rectSpeedY[i] < 0
+                    || (currentRect.y2 + rectSpeedY[i] > BOX_HEIGHT)) {
 						rectSpeedY[i] = -rectSpeedY[i];
 					}
                     rectangles[i].move(rectSpeedX[i], rectSpeedY[i]);
